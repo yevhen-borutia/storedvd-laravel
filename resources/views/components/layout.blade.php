@@ -3,12 +3,12 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>{{ $title ?? 'Интернет-магазин' }}</title>
-    <link href="{{ asset('css/main.css') }}" rel="stylesheet" />
+    <link href="{{ asset('storage/css/main.css') }}" rel="stylesheet" />
 </head>
 <body>
 <div id="container">
     <div id="header">
-        <img src="{{ asset('images/header.png') }}" alt="Шапка" />
+        <img src="{{ asset('storage/images/header.png') }}" alt="Шапка" />
         <div>
             <p class="red">8-800-123-45-67</p>
             <p class="blue">Время работы с 09:00 до 21:00<br />без перерыва и выходных</p>
@@ -26,13 +26,13 @@
                 <a href="">ГЛАВНАЯ</a>
             </li>
             <li>
-                <img src="{{ asset('images/topmenu_border.png') }}" alt="" />
+                <img src="{{ asset('storage/images/topmenu_border.png') }}" alt="" />
             </li>
             <li>
                 <a href="">ОПЛАТА И ДОСТАВКА</a>
             </li>
             <li>
-                <img src="{{ asset('images/topmenu_border.png') }}" alt="" />
+                <img src="{{ asset('storage/images/topmenu_border.png') }}" alt="" />
             </li>
             <li>
                 <a href="">КОНТАКТЫ</a>
@@ -46,9 +46,11 @@
                     <h3>Разделы</h3>
                 </div>
                 <div id="items">
-                    <p >
-                        <a href=""></a>
-                    </p>
+                    @foreach ($genres as $genre)
+                        <p>
+                            <a href="">{{$genre->title}}</a>
+                        </p>
+                    @endforeach
                 </div>
                 <div class="bottom"></div>
             </div>
@@ -63,7 +65,7 @@
                     <tr>
                         <td>Способы оплаты:</td>
                         <td>
-                            <img src="{{ asset('images/pm.png') }}" alt="Способы оплаты" />
+                            <img src="{{ asset('storage/images/pm.png') }}" alt="Способы оплаты" />
                         </td>
                     </tr>
                 </table>
