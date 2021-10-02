@@ -48,7 +48,7 @@
                 <div id="items">
                     @foreach ($genres as $genre)
                         <p>
-                            <a href="">{{$genre->title}}</a>
+                            <a href="{{url('/section/'.$genre->id)}}">{{$genre->title}}</a>
                         </p>
                     @endforeach
                 </div>

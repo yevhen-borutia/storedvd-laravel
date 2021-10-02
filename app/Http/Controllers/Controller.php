@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Genre;
 use App\Models\Movie;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
@@ -36,5 +37,23 @@ class Controller extends BaseController
 
     public function contacts() {
         return view('contacts');
+    }
+
+    public function section($id) {
+        $genre = Genre::findOrFail($id);
+        $movies = null;
+        $sort = request('sort', null);
+        $up = request('up', null);
+
+        $movies = Movie::where('active',1)->where('genre_id', $genre->id);
+
+        if (($sort === 'price' || $sort === 'title') && ($up === '1' || $up === '0')) {
+            $movies->orderBy($sort, ($up == 1 ? 'asc' : 'desc'));
+        }
+
+        return view('section', [
+            'movies' => $movies->get(),
+            'genre' => $genre
+        ]);
     }
 }
