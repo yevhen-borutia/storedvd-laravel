@@ -2,7 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Controller;
-use App\Models\Genre;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,7 +13,7 @@ use App\Models\Genre;
 |
 */
 
-Route::get('/', [Controller::class, 'index']);
+Route::get('/{sort?}/{up?}', [Controller::class, 'index']);
 
 
 Route::group(['prefix' => 'admin'], function () {

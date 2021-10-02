@@ -14,8 +14,8 @@
                 <table class="sort">
                     <tr>
                         <td>Сортировать по:</td>
-                        <td>цене (<a href="">возр.</a> | <a href="">убыв.</a>)
-                        <td>названию (<a href="">возр.</a> | <a href="">убыв.</a>)
+                        <td>цене (<a href="{{request()->fullUrlWithQuery(['sort' => 'price', 'up' => 1])}}">возр.</a> | <a href="{{request()->fullUrlWithQuery(['sort' => 'price', 'up' => 0])}}">убыв.</a>)
+                        <td>названию (<a href="{{request()->fullUrlWithQuery(['sort' => 'title', 'up' => 1])}}">возр.</a> | <a href="{{request()->fullUrlWithQuery(['sort' => 'title', 'up' => 0])}}">убыв.</a>)
                     </tr>
                 </table>
             </td>
