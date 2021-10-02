@@ -14,6 +14,7 @@ class Controller extends BaseController
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
     public function index() {
+
         $movies = null;
         $sort = request('sort', null);
         $up = request('up', null);
@@ -27,5 +28,9 @@ class Controller extends BaseController
         return view('index', [
             'movies' => $movies
         ]);
+    }
+
+    public function delivery() {
+        return view('delivery');
     }
 }

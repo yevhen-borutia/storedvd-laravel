@@ -23,13 +23,13 @@
     <div id="topmenu">
         <ul>
             <li>
-                <a href="">ГЛАВНАЯ</a>
+                <a href="{{url('/')}}">ГЛАВНАЯ</a>
             </li>
             <li>
                 <img src="{{ asset('storage/images/topmenu_border.png') }}" alt="" />
             </li>
             <li>
-                <a href="">ОПЛАТА И ДОСТАВКА</a>
+                <a href="{{url('/delivery')}}">ОПЛАТА И ДОСТАВКА</a>
             </li>
             <li>
                 <img src="{{ asset('storage/images/topmenu_border.png') }}" alt="" />

@@ -13,9 +13,8 @@ use App\Http\Controllers\Controller;
 |
 */
 
-Route::get('/{sort?}/{up?}', [Controller::class, 'index']);
-
-
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
+Route::get('/', [Controller::class, 'index']);
+Route::get('/delivery', [Controller::class, 'delivery']);
