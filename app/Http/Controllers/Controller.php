@@ -33,4 +33,8 @@ class Controller extends BaseController
     public function delivery() {
         return view('delivery');
     }
+
+    public function contacts() {
+        return view('contacts');
+    }
 }

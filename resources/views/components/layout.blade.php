@@ -35,7 +35,7 @@
                 <img src="{{ asset('storage/images/topmenu_border.png') }}" alt="" />
             </li>
             <li>
-                <a href="">КОНТАКТЫ</a>
+                <a href="{{url('/contacts')}}">КОНТАКТЫ</a>
             </li>
         </ul>
     </div>

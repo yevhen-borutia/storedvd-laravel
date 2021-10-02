@@ -18,3 +18,4 @@ Route::group(['prefix' => 'admin'], function () {
 });
 Route::get('/', [Controller::class, 'index']);
 Route::get('/delivery', [Controller::class, 'delivery']);
+Route::get('/contacts', [Controller::class, 'contacts']);
