@@ -4,7 +4,7 @@
             <img src="{{asset('storage/'. $movie->img)}}" alt="{{ $movie->title }}" />
         </p>
         <p class="title">
-            <a href="{{$movie->id}}">{{ $movie->title }}</a>
+            <a href="{{url('/product/'.$movie->id)}}">{{ $movie->title }}</a>
         </p>
         <p class="price">{{ $movie->price }} руб.</p>
         <p>

@@ -56,4 +56,17 @@ class Controller extends BaseController
             'genre' => $genre
         ]);
     }
+
+    public function product($id) {
+        $product = Movie::where('active', 1)->findOrFail($id);
+        $section = Genre::findOrFail($product->genre_id);
+        $otherProducts = Movie::where('genre_id', $product->genre_id)
+            ->where('active', 1)
+            ->where('id', '!=', $product->id)->inRandomOrder()->limit(4)->get();
+        return view('product', [
+            'product' => $product,
+            'section' => $section,
+            'otherProducts' => $otherProducts
+        ]);
+    }
 }
