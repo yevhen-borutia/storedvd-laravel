@@ -8,7 +8,7 @@
         </p>
         <p class="price">{{ $movie->price }} руб.</p>
         <p>
-            <a class="link_cart" href=""></a>
+            <a class="link_cart" href="{{url("/cart?func=add&id={$movie->id}")}}"></a>
         </p>
     </div>
 </td>

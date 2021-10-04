@@ -21,3 +21,5 @@ Route::get('/delivery', [Controller::class, 'delivery']);
 Route::get('/contacts', [Controller::class, 'contacts']);
 Route::get('/section/{id}', [Controller::class, 'section']);
 Route::get('/product/{id}', [Controller::class, 'product']);
+Route::get('/cart', [Controller::class, 'cart']);
+Route::post('/cart', [Controller::class, 'cart']);

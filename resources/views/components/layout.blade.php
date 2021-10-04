@@ -13,12 +13,7 @@
             <p class="red">8-800-123-45-67</p>
             <p class="blue">Время работы с 09:00 до 21:00<br />без перерыва и выходных</p>
         </div>
-        <div class="cart">
-            <p class="cart_title">Корзина</p>
-            <p class="blue">Текущий заказ</p>
-            <p>В корзине <span></span> товаров<br />на сумму <span></span> руб.</p>
-            <a href="">Перейти в корзину</a>
-        </div>
+        <x-cart></x-cart>
     </div>
     <div id="topmenu">
         <ul>
