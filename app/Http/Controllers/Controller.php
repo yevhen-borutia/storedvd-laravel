@@ -2,14 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\DeliveryType;
 use App\Models\Discount;
 use App\Models\Genre;
 use App\Models\Movie;
+use App\Models\Order;
+use App\Models\OrderItem;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 
 class Controller extends BaseController
 {
@@ -118,5 +122,85 @@ class Controller extends BaseController
                 'disc_value' => $disc->value ?? 0
             ]);
         }
+    }
+
+    public function order() {
+        if (request()->method() == 'POST') {
+            $val = Validator::make(request()->all(), [
+                'name' => 'required',
+                'phone' => 'required',
+                'email' => 'required|email',
+                'delivery_type' => 'required|exists:delivery_types,type',
+                'address' => 'required_if:delivery_type,==,deli'
+            ]);
+            $val->after(function ($validator) {
+                if (empty(session('cart'))) {
+                    $validator->errors()->add('cart', 'Your cart is empty');
+                }
+            });
+            $val->validate();
+
+            $cart = session('cart',[]);
+            $prices = Movie::select(['id', 'price'])->whereIn('id', array_keys($cart))->where('active',1)->get()->keyBy('id')->toArray();
+            $discount = session('discount');
+            if (empty($discount)) {
+                request()->merge([
+                    'discount_id' => null,
+                    'discount_code' => null,
+                    'discount_value' => null
+                ]);
+            }
+            else {
+                $discount = Discount::find($discount);
+                if (!is_null($discount)) {
+                    request()->merge([
+                        'discount_id' => $discount->id,
+                        'discount_code' => $discount->code,
+                        'discount_value' => $discount->value
+                    ]);
+                }
+            }
+            DB::beginTransaction();
+            try {
+                $order = Order::create(request()->all());
+                $order_items = [];
+                foreach ($cart as $item_id => $item_count) {
+                    if (!empty($prices[$item_id])) {
+                        $order_items[] = new OrderItem([
+                            'order_id' => $order->id,
+                            'movie_id' => $item_id,
+                            'quantity' => $item_count,
+                            'price' => $prices[$item_id]['price']
+                        ]);
+                    }
+                }
+                $order->items()->saveMany($order_items);
+                DB::commit();
+                session(['order_id' => $order->id]);
+                return redirect()->to('/addorder/'.$order->id);
+            } catch (\Exception $e) {
+                DB::rollback();
+                throw $e;
+            } catch (\Throwable $e) {
+                DB::rollback();
+                throw $e;
+            }
+        }
+        else {
+            $delivery_types = DeliveryType::all();
+            return view('order',[
+                'delivery_types' => $delivery_types
+            ]);
+        }
+    }
+
+    public function addorder($id) {
+        if ($id != session('order_id')) {
+            abort(404);
+        }
+        $order = Order::findOrFail($id);
+        return view('addorder', [
+            'order' => $order
+        ]);
     }
 }

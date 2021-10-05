@@ -83,5 +83,6 @@
             </div>
         </div>
     </div>
+    <script src="{{ asset('storage/js/functions.js') }}"></script>
 </body>
 </html>

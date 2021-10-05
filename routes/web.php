@@ -23,3 +23,6 @@ Route::get('/section/{id}', [Controller::class, 'section']);
 Route::get('/product/{id}', [Controller::class, 'product']);
 Route::get('/cart', [Controller::class, 'cart']);
 Route::post('/cart', [Controller::class, 'cart']);
+Route::get('/order', [Controller::class, 'order']);
+Route::post('/order', [Controller::class, 'order']);
+Route::get('/addorder/{id}', [Controller::class, 'addorder']);

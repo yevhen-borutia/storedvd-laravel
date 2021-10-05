@@ -107,7 +107,7 @@
             <td colspan="4">
                 <div class="right">
                     <input type="hidden" name="func" value="cart" />
-                    <a href="">
+                    <a href="{{url('/order')}}">
                         <img src="{{asset('storage/images/cart_order.png')}}" alt="Оформить заказ" onmouseover="this.src='{{asset('storage/images/cart_order_active.png')}}'" onmouseout="this.src='{{asset('storage/images/cart_order.png')}}'" />
                     </a>
                 </div>
