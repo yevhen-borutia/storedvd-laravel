@@ -203,4 +203,29 @@ class Controller extends BaseController
             'order' => $order
         ]);
     }
+
+    public function search($q = null, $sort = null, $up = null) {
+        $q = request('q');
+        $sort = request('sort');
+        $up = request('up');
+        $movies = [];
+        if (!empty($q)) {
+            $movies = Movie::where('active', 1)->where(function($query) use ($q) {
+                $query->where('title', 'like', '%'.$q.'%')
+                    ->orWhere('country', 'like',  '%'.$q.'%')
+                    ->orWhere('year', 'like', '%'.$q.'%')
+                    ->orWhere('director', 'like', '%'.$q.'%')
+                    ->orWhere('cast', 'like', '%'.$q.'%')
+                    ->orWhere('description', 'like', '%'.$q.'%');
+            });
+            if (($sort === 'price' || $sort === 'title') && ($up === '1' || $up === '0')) {
+                $movies->orderBy($sort, ($up == 1 ? 'asc' : 'desc'));
+            }
+            $movies = $movies->get();
+        }
+        return view('search', [
+            'movies' => $movies,
+            'q' => $q
+        ]);
+    }
 }

@@ -33,6 +33,19 @@
                 <a href="{{url('/contacts')}}">КОНТАКТЫ</a>
             </li>
         </ul>
+        <div id="search">
+            <form name="search" action="{{url('/search')}}" method="get">
+                <table>
+                    <tbody><tr>
+                        <td class="input_left"></td>
+                        <td>
+                            <input type="text" name="q" value="поиск" onfocus="if(this.value == 'поиск') this.value=''" onblur="if(this.value == '') this.value='поиск'">
+                        </td>
+                        <td class="input_right"></td>
+                    </tr>
+                    </tbody></table>
+            </form>
+        </div>
     </div>
     <div id="content">
         <div id="left">
