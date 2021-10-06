@@ -22,7 +22,7 @@
                         </td>
                         <td>
                             <p>
-                                <a class="link_cart" href=""></a>
+                                <a class="link_cart" href="{{url("/cart?func=add&id={$product->id}")}}"></a>
                             </p>
                         </td>
                     </tr>
