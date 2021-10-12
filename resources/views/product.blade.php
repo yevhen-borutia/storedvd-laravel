@@ -2,6 +2,23 @@
     <x-slot name="title">
         {{$section->title}}
     </x-slot>
+    <table id="hornav">
+        <tbody><tr>
+            <td>
+                <a href="{{url('/')}}">Главная</a>
+            </td>
+            <td>
+                <img src="{{asset('storage/images/hornav_arrow.png')}}" alt="">
+            </td>
+            <td>
+                <a href="{{url('/section/'.$section->id)}}">{{$section->title}}</a>
+            </td>
+            <td>
+                <img src="{{asset('storage/images/hornav_arrow.png')}}" alt="">
+            </td>
+            <td>{{$product->title}}</td>
+        </tr>
+        </tbody></table>
     <table id="product">
         <tbody><tr>
             <td class="product_img">
