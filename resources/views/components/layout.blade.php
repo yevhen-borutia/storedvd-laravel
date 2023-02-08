@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>{{ $title ?? 'Интернет-магазин' }}</title>
+    <title>{{ $title ?? __('Online store') }}</title>
     <link href="{{ asset('storage/css/main.css') }}" rel="stylesheet" />
 </head>
 <body>
@@ -11,26 +11,37 @@
         <img src="{{ asset('storage/images/header.png') }}" alt="Шапка" />
         <div>
             <p class="red">8-800-123-45-67</p>
-            <p class="blue">Время работы с 09:00 до 21:00<br />без перерыва и выходных</p>
+            <p class="blue">{!! __('Opening hours from 9AM to 9PM without breaks and days off') !!}</p>
         </div>
         <x-cart></x-cart>
     </div>
+    <div class="flex justify-center pt-8 sm:justify-start sm:pt-0">
+    @foreach(config('app.available_locales') as $locale_name => $available_locale)
+        @if($available_locale === app()->getLocale())
+            <span class="ml-2 mr-2 text-gray-700">{{ $locale_name }}</span>
+        @else
+            <a class="ml-1 underline ml-2 mr-2" href="/language/{{ $available_locale }}">
+                <span>{{ $locale_name }}</span>
+            </a>
+        @endif
+    @endforeach
+</div>
     <div id="topmenu">
         <ul>
             <li>
-                <a href="{{url('/')}}">ГЛАВНАЯ</a>
+                <a href="{{url('/')}}">{{ __('MAIN') }}</a>
             </li>
             <li>
                 <img src="{{ asset('storage/images/topmenu_border.png') }}" alt="" />
             </li>
             <li>
-                <a href="{{url('/delivery')}}">ОПЛАТА И ДОСТАВКА</a>
+                <a href="{{url('/delivery')}}">{{ __('PAYMENT AND DELIVERY') }}</a>
             </li>
             <li>
                 <img src="{{ asset('storage/images/topmenu_border.png') }}" alt="" />
             </li>
             <li>
-                <a href="{{url('/contacts')}}">КОНТАКТЫ</a>
+                <a href="{{url('/contacts')}}">{{ __('CONTACTS')}}</a>
             </li>
         </ul>
         <div id="search">
@@ -39,7 +50,7 @@
                     <tbody><tr>
                         <td class="input_left"></td>
                         <td>
-                            <input type="text" name="q" value="поиск" onfocus="if(this.value == 'поиск') this.value=''" onblur="if(this.value == '') this.value='поиск'">
+                            <input type="text" name="q" value="{{ __('search') }}" onfocus="if(this.value == '{{ __('search') }}') this.value=''" onblur="if(this.value == '') this.value='{{ __('search') }}'">
                         </td>
                         <td class="input_right"></td>
                     </tr>
@@ -51,12 +62,12 @@
         <div id="left">
             <div id="menu">
                 <div class="header">
-                    <h3>Разделы</h3>
+                    <h3>{{ __('Sections') }}</h3>
                 </div>
                 <div id="items">
                     @foreach ($genres as $genre)
                         <p>
-                            <a href="{{url('/section/'.$genre->id)}}">{{$genre->title}}</a>
+                            <a href="{{url('/section/'.$genre->id)}}">{{ $genre->title }}</a>
                         </p>
                     @endforeach
                 </div>
@@ -71,7 +82,7 @@
             <div id="pm">
                 <table>
                     <tr>
-                        <td>Способы оплаты:</td>
+                        <td>{{ __('Payment methods:') }}</td>
                         <td>
                             <img src="{{ asset('storage/images/pm.png') }}" alt="Способы оплаты" />
                         </td>
@@ -79,20 +90,7 @@
                 </table>
             </div>
             <div id="copy">
-                <p>Copyright &copy; Site.ru. Все права защищены.</p>
-                <p class="counter">
-                    <!--LiveInternet counter--><script type="text/javascript"><!--
-                        document.write("<a href='http://www.liveinternet.ru/click' "+
-                            "target=_blank><img src='//counter.yadro.ru/hit?t11.2;r"+
-                            escape(document.referrer)+((typeof(screen)=="undefined")?"":
-                                ";s"+screen.width+"*"+screen.height+"*"+(screen.colorDepth?
-                                screen.colorDepth:screen.pixelDepth))+";u"+escape(document.URL)+
-                            ";h"+escape(document.title.substring(0,80))+";"+Math.random()+
-                            "' alt='' title='LiveInternet: показано число просмотров за 24"+
-                            " часа, посетителей за 24 часа и за сегодня' "+
-                            "border='0' width='88' height='31'><\/a>")
-                        //--></script><!--/LiveInternet-->
-                </p>
+                <p>Copyright &copy; {{ request()->getHost() }} {{ __('All rights reserved.') }}</p>
             </div>
         </div>
     </div>

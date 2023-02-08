@@ -16,8 +16,8 @@ class Layout extends Component
      */
     public function __construct($a=null)
     {
-
-        $this->genres = Genre::all();
+//die(app()->getLocale());
+        $this->genres = Genre::all()->translate();
     }
 
     /**

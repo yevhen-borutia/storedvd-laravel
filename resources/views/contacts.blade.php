@@ -1,13 +1,10 @@
 <x-layout>
     <x-slot name="title">
-        Контакты
+        {{ __('Contacts') }}
     </x-slot>
     <div id="article">
-        <h2>Контакты</h2>
-        <p>Мы находимся по адресу г. Москва, ул. такая-то, д. такой-то.</p>
-        <p>Мы работаем с 09:00 до 21:00 без перерыва и выходных.</p>
-        <p>А вообще это тестовый сайт, который был создан в обучащем курсе Михаила Русакова<br /><a href="https://srs.myrusakov.ru/im">Создание Интернет-магазина на PHP и MySQL</a></p>
-        <p>В связи с этим, данный сайт ничего в реальности не продаёт. Поэтому, заказав какой-нибудь фильм, не стоит ждать, что он к Вам придёт.</p>
+        <h2>{{ __('Contacts') }}</h2>
+        {!! __("<p>We are located at the address So-and-So street, such-and-such, Moscow</p><p>We work from 09:00 to 21:00 without breaks and weekends.</p><p>At all this is a test site that was created in the training course by Mikhail Rusakov<br /><a href=\"https://srs.myrusakov.ru/im\">Creating an Internet store with PHP and MySQL</a></p><p>In this regard, this site does not actually sell anything. So when you order some movie, you shouldn't expect it to come to you.</p>") !!}
     </div>
     <div id="map" style="width:400px; height:300px"></div>
     <script src="//api-maps.yandex.ru/2.0-stable/?load=package.standard&lang=ru-RU" type="text/javascript"></script>
@@ -22,10 +19,10 @@
                 }),
                 myPlacemark = new ymaps.Placemark([55.739533,37.624744], {
                     // Чтобы балун и хинт открывались на метке, необходимо задать ей определенные свойства.
-                    balloonContentHeader: "Наш магазин",
-                    balloonContentBody: "<em>г. Москва, ул. такая-то, д. такой-то</em>",
-                    balloonContentFooter: "Ждём Вас!",
-                    hintContent: "Мы здесь!"
+                    balloonContentHeader: "{{ __("Our store") }}",
+                    balloonContentBody: "<em>{{ __("Moscow, st. such and such, d. such and such") }}</em>",
+                    balloonContentFooter: "{{ __("Waiting for you") }}!",
+                    hintContent: "{{ __("We are here") }}!"
                 });
             // элемента управления и его параметры.
             myMap.controls
@@ -41,7 +38,7 @@
             myMap.geoObjects.add(myPlacemark);
 
             // Показываем хинт на карте (без привязки к геообъекту).
-            myMap.hint.show(myMap.getCenter(), "Содержимое хинта", {
+            myMap.hint.show(myMap.getCenter(), "{{ __("Tooltip content") }}", {
                 // Опция: задержка перед открытием.
                 showTimeout: 1500
             });

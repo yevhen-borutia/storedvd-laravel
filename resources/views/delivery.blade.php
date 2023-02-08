@@ -1,12 +1,10 @@
 <x-layout>
     <x-slot name="title">
-        Оплата и доставка
+        {{ __("Payment and delivery") }}
     </x-slot>
     <div id="article">
-        <h2>Оплата и доставка</h2>
-        <p>У нас есть 2 варианта доставки: доставка по почте наложенным платежом и самовывоз.</p>
-        <p>Возможны и другие варианты оплаты и доставки, о которых можно договориться по телефону с менеджером после оформление заказа.</p>
-        <p>А вообще это тестовый сайт, который был создан в обучащем курсе Михаила Русакова<br /><a href="https://srs.myrusakov.ru/im">Создание Интернет-магазина на PHP и MySQL</a></p>
-        <p>В связи с этим, данный сайт ничего в реальности не продаёт. Поэтому, заказав какой-нибудь фильм, не стоит ждать, что он к Вам придёт.</p>
+        <h2>{{ __("Payment and delivery") }}</h2>
+        {!! __("<p>We have 2 delivery options: postal cash on delivery and pickup.</p><p>Other payment and delivery options are also possible, which can be agreed by phone with the manager after placing the order.</p><p>In general, this is a test site that was created in the training course by Mikhail Rusakov<br /><a href=\"https://srs.myrusakov.ru/im\">Creating an online store using PHP and MySQL</a ></p><p>In this regard, this site does not actually sell anything. Therefore, when ordering a film, you should not wait for it to come to you.</p>") !!}
+        
     </div>
 </x-layout>

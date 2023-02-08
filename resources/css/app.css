@@ -313,17 +313,105 @@ body {
 }
 
 .link_cart {
-	background: url("../images/cart.png") no-repeat;
+/*	background: url("../images/cart.png") no-repeat;
 	display: block;
 	height: 27px;
 	margin: 0 auto;
-	width: 106px;
+	width: 106px;*/
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 9px 9px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
 }
 
 .link_cart:hover {
-	background: url("../images/cart_active.png") no-repeat;
+	/*background: url("../images/cart_active.png") no-repeat;*/
+          background-color: #3e8e41; /* Darker green */
+
 }
 
+.apply_disc {
+    
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 5px 5px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.apply_disc:hover {
+	/*background: url("../images/cart_active.png") no-repeat;*/
+          background-color: #3e8e41; /* Darker green */
+
+}
+
+.recalc {
+    
+  background-color: grey; /* Green */
+  border: none;
+  color: white;
+  padding: 6px 30px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.recalc:hover {
+	/*background: url("../images/cart_active.png") no-repeat;*/
+          background-color: #666565; /* Darker green */
+}
+
+.checkout {
+    
+  background-color: #e32525; /* Green */
+  border: none;
+  color: white;
+  padding: 6px 30px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.checkout:hover {
+	/*background: url("../images/cart_active.png") no-repeat;*/
+          background-color: #cf1e1e; /* Darker green */
+}
+
+.fin_check 
+{    
+  background-color: #e32525; /* Green */
+  border: none;
+  color: white;
+  padding: 6px 30px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.fin_check:hover {
+	/*background: url("../images/cart_active.png") no-repeat;*/
+          background-color: #cf1e1e; /* Darker green */
+}
 p.price {
 	color: #d51616;
 	font-weight: bold;

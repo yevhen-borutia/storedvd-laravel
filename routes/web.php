@@ -27,3 +27,4 @@ Route::get('/order', [Controller::class, 'order']);
 Route::post('/order', [Controller::class, 'order']);
 Route::get('/addorder/{id}', [Controller::class, 'addorder']);
 Route::get('/search', [Controller::class, 'search']);
+Route::get('language/{locale}', [Controller::class, 'language']);
